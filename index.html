@@ -5,6 +5,21 @@
   <title>HPlus Sport</title>
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  <script>
+      $(document).ready(function(){
+        $("h2[data-type=vitamin]").css("background-color", "darkgreen");
+        $("h2[data-type=mineralwater]").css("background-color", "blue");
+        $("h2[data-type=proteinbar]").css("background-color", "rebeccapurple");
+        $("#filter input").click(function() {
+            $("#filter input").each(function() {
+                if ($(this).not(":checked")) {
+                    alert($(this) + "is checked");
+                }
+            });
+        });
+      });
+  </script>
 </head>
 <body>
 
@@ -42,6 +57,15 @@
 
 <section id="products" class="section">
   <header class="imageheader"></header>
+  <div id="filter">
+    Show:
+    <input type="checkbox" name="Vitamins" id="vitamin" checked/>
+    <label for="vitamin">Vitamins</label>
+    <input type="checkbox" name="Mineral Water" id="mineralwater" checked/>
+    <label for="mineralwater">Mineral Water</label>
+    <input type="checkbox" name="Protein Bars" id="proteinbar" checked/>
+    <label for="proteinbar">Protein Bars</label>
+  </div>
   <div class="container">
     <h2 class="headline">Products</h2>
     <p>H+ Sport is <em>dedicated to creating</em> eco-friendly, high-quality, nutrient-rich, nutritional products that <em>enhance active lifestyles</em>. We <a href="#guarantee">guarantee</a> it. Take a look at some of our products.</p>
