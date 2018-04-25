@@ -8,13 +8,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
   <script>
       $(document).ready(function(){
-        $("h2[data-type=vitamin]").css("background-color", "darkgreen");
-        $("h2[data-type=mineralwater]").css("background-color", "blue");
-        $("h2[data-type=proteinbar]").css("background-color", "rebeccapurple");
+        var $vitamin = $("h2[data-type=vitamin]");
+        var $minWater = $("h2[data-type=mineralwater]");
+        var $protBar = $("h2[data-type=proteinbar]");
+        $vitamin.css("background-color", "darkgreen");
+        $minWater.css("background-color", "blue");
+        $protBar.css("background-color", "rebeccapurple");
         $("#filter input").click(function() {
             $("#filter input").each(function() {
-                if ($(this).not(":checked")) {
-                    alert($(this) + "is checked");
+                var $checkId = $(this).attr("id");
+                if ($(this).is(":checked")) {
+                    $("h2[data-type=" + $checkId + "]").parent().show();
+                } else {
+                    $("h2[data-type=" + $checkId + "]").parent().hide();
                 }
             });
         });
@@ -57,6 +63,10 @@
 
 <section id="products" class="section">
   <header class="imageheader"></header>
+  <div class="container">
+    <h2 class="headline">Products</h2>
+    <p>H+ Sport is <em>dedicated to creating</em> eco-friendly, high-quality, nutrient-rich, nutritional products that <em>enhance active lifestyles</em>. We <a href="#guarantee">guarantee</a> it. Take a look at some of our products.</p>
+  </div><!-- container -->
   <div id="filter">
     Show:
     <input type="checkbox" name="Vitamins" id="vitamin" checked/>
@@ -66,10 +76,6 @@
     <input type="checkbox" name="Protein Bars" id="proteinbar" checked/>
     <label for="proteinbar">Protein Bars</label>
   </div>
-  <div class="container">
-    <h2 class="headline">Products</h2>
-    <p>H+ Sport is <em>dedicated to creating</em> eco-friendly, high-quality, nutrient-rich, nutritional products that <em>enhance active lifestyles</em>. We <a href="#guarantee">guarantee</a> it. Take a look at some of our products.</p>
-  </div><!-- container -->
   <ul class="product-list">
     <li class="product-item" data-prod_id="V-A1037">
         <img class="product-image" src="images/products/vitamin-a.jpg" alt="Vitamin A - Product Photo">
